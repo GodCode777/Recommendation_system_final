@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reviewed Items</title>
+	<style type="text/css">
+		table {
+			border-collapse: collapse;
+			margin-top: 100px;
+			margin-bottom: 50px;
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		th, td {
+			padding: 8px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+		th {
+			background-color: #f2f2f2;
+		}
+		h2 {
+			text-align: center;
+			margin-bottom: 50px;
+		}
+		button{
+			text-align: center;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<h2>Recommendations for the User : {{ reviewer_id }}</h2>
+	<form action="/rec" method="POST">
+	<table>
+		<thead>
+			<tr>
+				<th>Product ID</th>
+				<th>Tile</th>
+				<th>pos</th>
+				<th>neg</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for index, row in user_reviews.iterrows() %}
+				<tr>
+					<td>{{ row['asin'] }}</td>
+					<td>{{ row['title'] }}</td>
+					<!-- <td>{{ row['overall'] }}</td>
+					<td>{{ row['reviewText'] }}</td> -->
+					<td><input type="checkbox" id="{{row.asin}}_pos" name="pos" value="{{row.asin}}"></td>
+					<td><input type="checkbox" id="{{row.asin}}_neg" name="neg" value="{{row.asin}}"></td>
+					<!-- <td><button class="{{row.asin}}_pos">UP</button></td> -->
+					<!-- <td><button class="{{row.asin}}_neg">DOWN</button></td> -->
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<center>
+	<button type='submit' name='action' value="next">next</button>
+	<button type='submit' name="action" value="done">done</button>
+</center>
+</form>
+	
+</body>
+</html>

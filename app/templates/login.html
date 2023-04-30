@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<style type="text/css">
+		form {
+			margin-top: 100px;
+			text-align: center;
+		}
+		input[type="text"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+		}
+		input[type="submit"] {
+			padding: 10px;
+			background-color: #008CBA;
+			color: #fff;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+		}
+		p {
+			color: red;
+			font-weight: bold;
+			margin-top: 10px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<form action="/" method="POST">
+		<label for="reviewerID">ReviewerID:</label>
+		<input type="text" id="reviewerID" name="reviewer_id" required><br><br>
+		<input type="submit" value="Login">
+	</form>
+	{% if error %}
+		<p>{{ error }}</p>
+	{% endif %}
+</body>
+</html>
